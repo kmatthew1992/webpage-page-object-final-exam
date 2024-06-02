@@ -22,7 +22,7 @@ public class ExamTest extends ParentTest {
     private final CheckoutFiller checkoutFiller = new CheckoutFiller(driver);
 
     @Test
-    public void testLogin() {
+    public void testWebpage() {
         openLoginPage();
         loginPageController.adminLogin(AdminFactory.getAdmin(AdminType.VALID_ADMIN));
         cookieController.clickCookieButton();
@@ -69,9 +69,8 @@ public class ExamTest extends ParentTest {
         Assertions.assertEquals("$20", summaryPageController.getProductPrice().get(1));
         Assertions.assertEquals("$10", summaryPageController.getProductTotalPrice().get(0));
         Assertions.assertEquals("$20", summaryPageController.getProductTotalPrice().get(1));
-        Assertions.assertEquals("$30", summaryPageController.getTotalPrice().get(0));
+        Assertions.assertEquals("$30", summaryPageController.getTotalPrice().getFirst());
         summaryPageController.clickOrderButton();
-        Assertions.assertEquals("Thank you for your order!", summaryPageController.getOrderEndingMessage().get(0));
-
+        Assertions.assertEquals("Thank you for your order!", summaryPageController.getOrderEndingMessage().getFirst());
     }
 }
