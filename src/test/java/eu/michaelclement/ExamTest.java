@@ -19,7 +19,6 @@ public class ExamTest extends ParentTest {
     private final ShoppingCartController shoppingCartController = new ShoppingCartController(driver);
     private final CheckoutController checkoutController = new CheckoutController(driver);
     private final SummaryPageController summaryPageController = new SummaryPageController(driver);
-    private final CheckoutFiller checkoutFiller = new CheckoutFiller(driver);
 
     @Test
     public void testWebpage() {
@@ -42,17 +41,15 @@ public class ExamTest extends ParentTest {
         productsPageController.addNthProductQuantity(1, 1);
         menuController.clickCartButton();
         shoppingCartController.clickCheckoutButton();
-        /*checkoutFiller.fillCheckoutForm("Kőszegi", "Máté", "valami@valami.hu", "Valami utca",
-                "8.", "Budapest", CountryOption.HUNGARY, "1234");*/
-        checkoutController.fillFirstNameField("Kőszegi");
-        checkoutController.fillLastNameField("Máté");
-        checkoutController.fillEmailAddressField("valami@valami.hu");
-        checkoutController.fillAddressLine1Field("Valami utca");
-        checkoutController.fillAddressLine2Field("8.");
-        checkoutController.fillCityField("Budapest");
-        checkoutController.selectCountry(CountryOption.HUNGARY);
-        checkoutController.fillZipCodeField("1234");
-        checkoutController.clickSummaryButton();
+        checkoutController.fillFirstNameField("Kőszegi")
+                .fillLastNameField("Máté")
+                .fillEmailAddressField("valami@valami.hu")
+                .fillAddressLine1Field("Valami utca")
+                .fillAddressLine2Field("8.")
+                .fillCityField("Budapest")
+                .selectCountry(CountryOption.HUNGARY)
+                .fillZipCodeField("1234")
+                .clickSummaryButton();
         Assertions.assertEquals("Kőszegi", summaryPageController.getDataTexts().get(0));
         Assertions.assertEquals("Máté", summaryPageController.getDataTexts().get(1));
         Assertions.assertEquals("valami@valami.hu", summaryPageController.getDataTexts().get(2));

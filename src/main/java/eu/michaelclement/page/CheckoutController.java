@@ -7,37 +7,45 @@ public class CheckoutController extends CheckoutElements {
         super(driver);
     }
 
-    public void fillFirstNameField(String input) {
+    public CheckoutController fillFirstNameField(String input) {
         firstNameField.sendKeys(input);
+        return this;
     }
 
-    public void fillLastNameField(String input) {
+    public CheckoutController fillLastNameField(String input) {
         lastNameField.sendKeys(input);
+        return this;
     }
 
-    public void fillEmailAddressField(String input) {
+    public CheckoutController fillEmailAddressField(String input) {
         emailAddressField.sendKeys(input);
+        return this;
     }
 
-    public void fillAddressLine1Field(String input) {
+    public CheckoutController fillAddressLine1Field(String input) {
         addressLine1Field.sendKeys(input);
+        return this;
     }
 
-    public void fillAddressLine2Field(String input) {
+    public CheckoutController fillAddressLine2Field(String input) {
         addressLine2Field.sendKeys(input);
+        return this;
     }
 
-    public void fillCityField(String input) {
+    public CheckoutController fillCityField(String input) {
         cityField.sendKeys(input);
+        return this;
     }
 
-    public void selectCountry(CountryOption country) {
+    public CheckoutController selectCountry(CountryOption country) {
         countryField.click();
         countryDropdownOptions.stream().filter(e -> country.getValue().equals(e.getText())).toList().get(0).click();
+        return this;
     }
 
-    public void fillZipCodeField(String input) {
+    public CheckoutController fillZipCodeField(String input) {
         zipCodeField.sendKeys(input);
+        return this;
     }
 
     public void clickSummaryButton() {
